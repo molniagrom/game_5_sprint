@@ -43,6 +43,16 @@ export class Game {
         this.#settings.googleJumpInterval = value;
     }
 
+    // В классе Game
+    get player1Position() {
+        return this.#player1Position;
+    }
+
+    get player2Position() {
+        return this.#player2Position;
+    }
+
+
     get status() {
         return this.#gameStatus;
     }
@@ -107,16 +117,16 @@ export class Game {
         }
 
         if (this.#player1Position !== null
-            && this.#player1Position.x === this.googlePosition?.x
-            && this.#player1Position.y === this.googlePosition?.y
+            && this.#player1Position.x === newPosition.x
+            && this.#player1Position.y === newPosition.y
         ) {
             this.#jumpGoogle()
             return
         }
 
         if (this.#player2Position !== null
-            && this.#player2Position.x === this.googlePosition?.x
-            && this.#player2Position.y === this.googlePosition?.y
+            && this.#player2Position.x === newPosition.x
+            && this.#player2Position.y === newPosition.y
         ) {
             this.#jumpGoogle()
             return
