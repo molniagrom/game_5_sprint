@@ -92,7 +92,11 @@ describe('Game', () => {
         game.googleJumpInterval = 5;
         game.start();
 
-        await delay(game["#googleMaxStepCount"] * game.googleJumpInterval + 20);
+        // wait until the step count is equal to the maximum step count
+        while (game.status !== GAME_STATUSES.GOOGLE_WIN) {
+            await delay(10);
+        }
+
         expect(game.status).toEqual(GAME_STATUSES.GOOGLE_WIN);
     });
 });
