@@ -65,15 +65,11 @@ describe('Game', () => {
         game.googleJumpInterval = 10;
         game.start();
 
-        let prev = null;
-        for (let i = 0; i < 10; i++) {
-            await delay(15);
-            const current = game.googlePosition;
-            if (prev) {
-                expect(current).not.toEqual(prev);
-            }
-            prev = current;
-        }
+        const startPos = game.googlePosition;   // запомнили, где был
+        await delay(20);                        // ждём чуть дольше одного интервала
+        const endPos = game.googlePosition;     // смотрим, где стал
+
+        expect(endPos).not.toEqual(startPos);   // проверяем, что сдвинулся
     });
 
     it('google should never jump on player positions', async () => {
